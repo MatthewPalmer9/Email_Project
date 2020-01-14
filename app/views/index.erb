@@ -9,6 +9,7 @@
    <!-- Bootstrap CSS -->
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
    <style media="screen">
+
      #spacer {
        padding: 4px;
      }
@@ -20,6 +21,31 @@
      #username {
        color: black;
        font-size: 1.5rem;
+     }
+
+     .asterisk {
+       color: red;
+       font-size: 1.2rem;
+     }
+
+     .main-container {
+       background-image: url('https://images.pexels.com/photos/1252869/pexels-photo-1252869.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')!important;
+       background-size: cover;
+       text-align: center;
+       min-height: 810px;
+       /*background-color: black;
+       color: rgb(250,250,250);*/
+       padding-top: 19rem 2rem 0;
+     }
+
+     .body-container {
+       background-color: black;
+       color: rgb(250,250,250);
+       box-shadow: 0px 0px 1.1px 1.1px black;
+       margin-top: 10vh;
+       margin: 1vh;
+       padding-top: 5%;
+       padding-bottom: 10%;
      }
 
      .header {
@@ -35,6 +61,17 @@
        text-align: left;
      }
 
+     h1 {
+       color: white;
+       text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
+     }
+
+     .h1-header-text {
+       color: rgb(250,250,250);
+       text-shadow: 1px 1px 2px black, 0 0 1em black, 0 0 0.2em white;
+       padding-top: 1.8rem;
+     }
+
      hr {
        border-top: 1px solid white;
        border-bottom: 2px solid black;
@@ -43,14 +80,18 @@
      }
 
      nav.navbar{
-       background-color: rgba(255,255,255,0.8)!important;
-       border-bottom: 1px solid black;
+       background-color: rgba(0,0,0,1)!important;
+       border-bottom: 1px solid white;
      }
 
      .subheader {
        text-align: center;
        font-size: 2rem;
-       padding-top: 20px;
+       padding-top: 10px;
+     }
+
+     .submit-btn {
+       text-align: center;
      }
 
      .jumbotron {
@@ -62,19 +103,31 @@
        text-shadow: 1px 1px black;
      }
 
+     .rainbow-text {
+       background-image: linear-gradient(to left, pink, violet, purple, blue, lightblue, green, yellow, orange, red);
+       -webkit-background-clip: text;
+       color: transparent;
+       text-shadow: 1px 1px 2px transparent, 0 0 1em white, 0 0 0.2em transparent;
+     }
+
      body {
-       background-color: white;
-       padding-top: 5%;
+       background-color: rgb(250,250,250);
+     }
+
+     html {
+       margin-top: 0;
      }
    </style>
 
 
      <title>RB|P Home</title>
-     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-     <a class="navbar-brand" href="/">Rainbows Photography</a>
+     <nav class="navbar navbar-expand-lg navbar-dark bg-light fixed-top">
+     <a class="navbar-brand" href="/">
+       <span class="rainbow-text">Rainbows Photography<span>
+     </a>
      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
      <span class="navbar-toggler-icon"></span>
-   </button>
+     </button>
 
    <div class="collapse navbar-collapse" id="navbarSupportedContent">
      <ul class="navbar-nav mr-auto">
@@ -95,52 +148,68 @@
    </div>
  </nav>
  </head>
- <body>
-   <div class="container">
+ <main>
+   <div class="main-container">
      <div class="container">
-
-     <form id="usrform" action="/administrator/clients" method="post">
-       <div class="text-center form-group">
-         <h1>Contact Me:</h1>
-         <hr>
-         <h5>I'm very excited to be working with you! <br> Please fill out the form below to get started.</h5>
+       <div class="jumbotron">
+         <h1 class="h1-header-text">
+           <div class="title-text text-center">
+             <span>Rainbows Photography</span><hr>
+           </div>
+         </h1>
        </div>
+     </div>
+   </div>
+ </main>
+ <body>
+   <div class="body-container">
+     <div class="container">
+       <div class="container">
 
-       <div class="form-group">
-         <label for="exampleFormControlInput1">Name:</label>
-         <input type="text" name="name" class="form-control">
+         <form id="usrform" action="/administrator/clients" method="post">
+           <div class="text-center form-group">
+             <h1>Contact Me:</h1>
+             <hr>
+             <h5>I'm very excited to be working with you! <br> Please fill out the form below to get started.</h5>
+           </div>
+
+           <div class="form-group">
+             <label for="exampleFormControlInput1"><span class="asterisk">*</span>Name:</label>
+             <input type="text" name="name" class="form-control" placeholder="Noralee Rose">
+           </div>
+
+           <div class="form-group">
+             <label for="exampleFormControlInput1"><span class="asterisk">*</span>Email Address: </label>
+             <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+           </div>
+
+           <div class="form-group">
+             <label for="exampleFormControlInput1"><span class="asterisk">*</span>Phone Number: </label>
+             <input type="text" name="phone_number" class="form-control" placeholder="(xxx) xxx-xxxx">
+           </div>
+
+           <div class="form-group">
+             <label for="shoot-types"><span class="asterisk">*</span>Requested Shoot Type: </label>
+             <select name="shoot-type" class="form-control">
+               <option></option>
+               <option>Ceremonial (Weddings/Engagement)</option>
+               <option>Birthday</option>
+               <option>Casual</option>
+             </select>
+           </div>
+
+           <div class="form-group">
+             <label for="comments">Comments (Optional): </label>
+             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+           </div>
+
+           <div class="submit-btn">
+             <input class="btn btn-primary" type="submit" name="submit" value="Submit">
+           </div>
+         </form>
        </div>
-
-       <div class="form-group">
-         <label for="exampleFormControlInput1">Email Address: </label>
-         <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-       </div>
-
-       <div class="form-group">
-         <label for="exampleFormControlInput1">Phone Number: </label>
-         <input type="text" name="phone_number" class="form-control" placeholder="(xxx) xxx-xxxx">
-       </div>
-
-      <div class="form-group">
-        <label for="shoot-types">Requested Shoot Type: </label>
-        <select name="shoot-type" class="form-control">
-          <option></option>
-          <option>Ceremonial (Weddings/Engagement)</option>
-          <option>Baby</option>
-          <option>Birthday</option>
-          <option>Casual</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="comments">Comments (Optional): </label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-      </div>
-
-      <input type="submit" name="submit" value="Submit"><p>
-     </form>
-    </div>
-  </div>
+     </div>
+   </div>
 
    <!-- Optional JavaScript -->
    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
