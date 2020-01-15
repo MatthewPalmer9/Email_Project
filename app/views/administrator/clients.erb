@@ -2,6 +2,7 @@
 <!doctype html>
 <html lang="en">
  <head>
+   <script src="https://kit.fontawesome.com/91ed56656c.js" crossorigin="anonymous"></script>
    <!-- Required meta tags -->
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -100,6 +101,9 @@
 
      .emails {
        background-color: white;
+       
+       max-width: 50%;
+       color: black;
      }
 
      .jumbotron {
@@ -177,13 +181,11 @@
            <% if @email.empty? %>
              <h1>No clients at this time...</h1>
            <% else %>
-              <% @email.each() do |email| %>
-                <div class="container emails">
-                  <%= @email.name %>
-                  <%= @email.email %>
-                  <%= @email.phone_number %>
-                  <%= @email.shoot_type %>
-                  <%= @email.optional_description %>
+              <% @email.each() do |client| %>
+                <div class="emails">
+                  <a href="/client/<%=client.id%>/view">
+                    <i class="fas fa-envelope-open-text fa-5x"></i><%= client.name %>
+                  </a>
                 </div>
               <% end %>
           <% end %>

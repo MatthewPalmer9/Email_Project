@@ -55,13 +55,23 @@ class ApplicationController < Sinatra::Base
    end
 
    get '/clients' do
-     @email = Email.all 
+     @email = Email.all
      @user = current_user
      if @user.id != 1
        redirect '/sessions/failure'
      else
        erb :'/administrator/clients'
      end
+   end
+
+   get '/thankyou' do
+     erb :thankyou
+   end
+
+   post '/clients/new' do
+     @email = Email.new(name: params[:name], email: params[:email], phone_number: params[:phone_number], shoot_type: params[:shoot_type], optional_description: params[:optional_description])
+     @email.save
+     redirect '/thankyou'
    end
 
     get '/signout' do
