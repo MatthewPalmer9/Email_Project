@@ -69,7 +69,7 @@ class ApplicationController < Sinatra::Base
    end
 
    get '/client/:id/view' do
-     @client = Email.find_by(params[:id])
+     @client = Email.find(params[:id])
      @user = current_user
      if @user.id != 1
        redirect '/sessions/failure'
