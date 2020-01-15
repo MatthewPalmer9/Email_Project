@@ -68,6 +68,16 @@ class ApplicationController < Sinatra::Base
      erb :thankyou
    end
 
+   get '/client/:id/view' do
+     @client = Email.find_by(params[:id])
+     @user = current_user
+     if @user.id != 1
+       redirect '/sessions/failure'
+     else
+       erb :'/administrator/view'
+     end
+   end
+
    post '/clients/new' do
      @email = Email.new(name: params[:name], email: params[:email], phone_number: params[:phone_number], shoot_type: params[:shoot_type], optional_description: params[:optional_description])
      @email.save
@@ -79,15 +89,27 @@ class ApplicationController < Sinatra::Base
       redirect '/'
     end
 
+    get '/delete/:id' do
+      @user = current_user
+      @email = Email.find(params[:id])
+      @email.delete
+      redirect '/clients'
+    end
+
     #HELPERS
     helpers do
       def logged_in?
-			!!session[:user_id]
-		end
+			  !!session[:user_id]
+		  end
 
-		def current_user
-			User.find(session[:user_id])
-		end
-	end
+		  def current_user
+			  User.find(session[:user_id])
+		  end
+
+      # def is_admin
+      #   @user = User.find(params[:id])
+      #   !!@user.id = 1
+      # end
+	  end
 
   end

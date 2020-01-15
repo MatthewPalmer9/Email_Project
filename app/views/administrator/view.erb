@@ -142,7 +142,7 @@
      }
 
      body {
-       background-color: rgb(250,250,250);
+       background-color: rgb(0,0,0);
      }
 
      html {
@@ -192,26 +192,19 @@
          <h1 class="h1-header-text">
 
            <div class="title-text text-center">
-             <span>Admin Panel</span><hr>
+             <span><%=@client.name%></span><hr>
            </div>
 
          </h1>
 
-           <% if @email.empty? %>
-             <h1>No clients at this time...</h1>
-           <% else %>
-              <% @email.each() do |client| %>
-                <% name = client.name %>
-                <% client_name = name.split(" ")[0] %>
-                <div class="container emails">
-                  <a class="text-center client-link" href="/client/<%=client.id%>/view">
-                    <i class="fas fa-envelope-open-text fa-2x"></i> <span id="client-name">&nbsp;<%= client_name  %></span>
-                  </a><br><br>
-                  <a href="/delete/<%=client.id%>"><i style="color: red" class="fas fa-trash-alt fa-2x"></i></a>
-                </div>
-
-              <% end %>
-          <% end %>
+            <div class="container emails">
+              <p style="background-color: rgb(240,240,240); border: 1px solid black; margin: 0; text-shadow: 0px 1px black; border-top-left-radius: 10px; border-top-right-radius: 10px;"><br><u>Name:</u><br> <%= @client.name %><br><br> </p>
+              <p style="background-color: rgb(240,240,240); border: 1px solid black; margin: 0; text-shadow: 0px 1px black;"><br><u>Email:</u><br> <%= @client.email %><br><br> </p>
+              <p style="background-color: rgb(240,240,240); border: 1px solid black; margin: 0; text-shadow: 0px 1px black;"><br><u>Phone Number:</u><br> <%= @client.phone_number %><br><br> </p>
+              <p style="background-color: rgb(240,240,240); border: 1px solid black; margin: 0; text-shadow: 0px 1px black;"><br><u>Shoot Type:</u><br> <%= @client.shoot_type %><br><br> </p>
+              <p style="background-color: rgb(240,240,240); border: 1px solid black; text-shadow: 0px 1px black;"><br><u>Optional Description:</u><br> <span style="color: black;">"<%= @client.optional_description %>"<br><br></span></p>
+              <a href="/delete/<%=@client.id%>"><i style="color: red" class="fas fa-trash-alt fa-3x"></i></a>
+            </div>
 
        </div>
      </div>
