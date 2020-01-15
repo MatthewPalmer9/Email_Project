@@ -11,6 +11,13 @@
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
    <style media="screen">
 
+    #client-name {
+      font-size: 2rem;
+      margin: 15%;
+      color: purple;
+      text-shadow: 1px 1px 2px black, 0 0 1em black, 0 0 0.2em white;
+    }
+
      #spacer {
        padding: 4px;
      }
@@ -27,6 +34,17 @@
      .asterisk {
        color: red;
        font-size: 1.2rem;
+     }
+
+     a.client-link {
+       text-decoration: none;
+       padding: 2px;
+     }
+
+     i.fa-envelope-open-text {
+       padding-top: 2px!important;
+       color: blue;
+       text-shadow: 1px 1px 2px black, 0 0 1em black, 0 0 0.2em white;
      }
 
      .main-container {
@@ -99,11 +117,12 @@
        text-align: center;
      }
 
-     .emails {
+     div.container.emails {
        background-color: white;
-       
        max-width: 50%;
        color: black;
+       padding: 10px;
+       border-radius: 20px;
      }
 
      .jumbotron {
@@ -168,8 +187,8 @@
  </head>
  <main>
    <div class="main-container">
-     <div class="container">
-       <div class="jumbotron">
+     <div class="text-center container">
+       <div class="text-center jumbotron">
          <h1 class="h1-header-text">
 
            <div class="title-text text-center">
@@ -182,9 +201,9 @@
              <h1>No clients at this time...</h1>
            <% else %>
               <% @email.each() do |client| %>
-                <div class="emails">
-                  <a href="/client/<%=client.id%>/view">
-                    <i class="fas fa-envelope-open-text fa-5x"></i><%= client.name %>
+                <div class="container emails">
+                  <a class="text-center client-link" href="/client/<%=client.id%>/view">
+                    <i class="fas fa-envelope-open-text fa-3x"></i> <span id="client-name">&nbsp;<%= client.name %></span>
                   </a>
                 </div>
               <% end %>
